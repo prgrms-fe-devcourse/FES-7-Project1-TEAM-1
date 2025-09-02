@@ -21,7 +21,7 @@ body {
     background-color: #1e293b;
     color: white;
     transform: translateX(0);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
     z-index: 1000;
 }
 
@@ -111,6 +111,15 @@ body {
 .sidebar-nav a.active:hover {
     background-color: #373d4b;
 }
+
+.treeNode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
 
 /* 메인 컨테이너 영역 */
 .main-content {
