@@ -8,75 +8,76 @@ const DEFAULT_HEADER = {
 
 const APIS = {
     // 전체 문서 조회
-    getDocument() {
-        fetch(BASE_URL, { headers: DEFAULT_HEADER })
-            .then((res) => {
+    async getDocument() {
+        return fetch(BASE_URL, { headers: DEFAULT_HEADER })
+            .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
-                return res.json().then((data) => {
-                    console.log(data)
-                })
+                const data = await res.json();
+                // console.log(data);
+                return data;
             })
             .catch((err) => {
                 console.error(err);
+                return [];
             });
     },
     // 특정 문서 조회
-    getSpecificDocument(documentId) {
-        fetch(`${BASE_URL}/${documentId}`, {
+    async getSpecificDocument(documentId) {
+        return fetch(`${BASE_URL}/${documentId}`, {
             headers: DEFAULT_HEADER,
             method: "GET",
         })
-            .then((res) => {
+            .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
-                return res.json().then((data) => {
-                    console.log(data)
-                })
+                const data = await res.json();
+                // console.log(data);
+                return data;
             })
             .catch((err) => {
                 console.error(err);
             });
     },
     // 문서 추가
-    addDocument() {
-        fetch(BASE_URL, { headers: DEFAULT_HEADER })
-            .then((res) => {
+    async addDocument() {
+        return fetch(BASE_URL, { headers: DEFAULT_HEADER })
+            .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
-                return res.json().then((data) => {
-                    console.log(data)
-                })
+                const data = await res.json();
+                // console.log(data);
+                return data;
             })
             .catch((err) => {
                 console.error(err);
             });
     },
     // 문서 수정
-    updateDocument(documentId, data) {
-        fetch(`${BASE_URL}/${documentId}`, {
+    async updateDocument(documentId, data) {
+        return fetch(`${BASE_URL}/${documentId}`, {
             headers: DEFAULT_HEADER,
             method: "PUT",
             body: JSON.stringify(data)
         })
-            .then((res) => {
+            .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
-                return res.json().then((data) => {
-                    console.log(data)
-                })
+                const data = await res.json();
+                // console.log(data);
+                return data;
             })
             .catch((err) => {
                 console.error(err);
             });
     },
     // 문서 삭제
-    deleteDocument(documentId) {
-        fetch(`${BASE_URL}/${documentId}`, {
+    async deleteDocument(documentId) {
+        return fetch(`${BASE_URL}/${documentId}`, {
             headers: DEFAULT_HEADER,
             method: "DELETE"
         })
-            .then((res) => {
+            .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
-                return res.json().then((data) => {
-                    console.log(data)
-                })
+                const data = await res.json();
+                // console.log(data);
+                return data;
             })
             .catch((err) => {
                 console.error(err);

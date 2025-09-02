@@ -62,8 +62,20 @@ const toggleSidebar = () => {
 menuButton.addEventListener("click", toggleSidebar);
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    APIS.getDocument();
-    APIS.getSpecificDocument(155598)
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        // 현재 팀 Document 데이터 안에 존재하는 모든 항목 출력
+        const documentTitle = await APIS.getDocument();
+        console.log(documentTitle)
+
+        // 현재 팀 Document 항목들의 title 출력
+        documentTitle.forEach(element => {
+            console.log(element.title)
+        });
+    } catch (err) {
+        console.error(err)
+    }
+
+    // APIS.getSpecificDocument(155598)
     // console.log(APIS.getSpecificDocument(155598))
 });
