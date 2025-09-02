@@ -1,0 +1,6 @@
+
+# etc
+.DS_Store
+*.pem
+dist/
+.idea/
