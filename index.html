@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notion Clone</title>
+    <link rel="stylesheet" href="./src/style/main.css" />
+  </head>
+  <body>
+    <!-- // 좌측 사이드바 영역 -->
+    <aside class="sidebar" id="sidebar">
+      <header class="sidebar-header">
+        <div class="sidebar-logo">
+          <span>사용자 이름(?)</span>
+          <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="메뉴 토글"
+            aria-expanded="true"
+          >
+            <!-- // Toggle Icon 영역  -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 6h18M3 12h18M3 18h18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <nav class="sidebar-nav">
+        <!-- // 좌측 사이드바 페이지 추가 예정 -->
+        <a href="#dashboard" class="nav-link active">대시보드</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <!-- // 메인 영역 헤더 부분 -->
+      <header class="page-header">
+        <div class="page-navigation">
+          <span class="breadcrumb-item active">헤더 영역</span>
+        </div>
+      </header>
+
+      <!-- // 대시보드 영역 -->
+      <div class="dashboard">
+        <section class="card editor-card">
+          <!-- // 컨텐츠 영역 헤더 부분 -->
+          <div class="card-header">
+            <div class="card-title">
+              📝 편집기 영역 (수정 예정)
+              <div class="editor-controls">
+                <!-- // 지우기 버튼 관련 svg 사용 -->
+                <button
+                  type="button"
+                  class="editor-btn"
+                  id="clearBtn"
+                  title="내용 지우기"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5-2V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v0h5"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- // 컨텐츠 영역 -->
+          <div class="card-content">
+            <div class="editor-container">
+              <!-- // textarea 영역 -->
+              <textarea
+                id="noteEditor"
+                class="note-editor"
+                placeholder="내용을 입력하세요..."
+              ></textarea>
+
+              <!-- // 기능 검토 후 추가 예정(글자 수) -->
+              <!-- <div class="editor-status">
+                <span class="char-count">0자</span>
+              </div> -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./src/script/index.js"></script>
+  </body>
+</html>
