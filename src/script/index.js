@@ -5,19 +5,28 @@ const menuButton = document.getElementById("menuButton");
 const sidebar = document.getElementById("sidebar");
 const mainContent = document.getElementById("mainContent");
 
+// 임시 기능
+const saveBtn = document.getElementById("saveBtn");
+
 // 사이드바 상태 관리 (false = 접힘, true = 펼침)
 let sidebarOpen = true;
 
 // 노트 입력 이벤트
 noteEditor.addEventListener("input", () => {
-    charCount.textContent = `${noteEditor.value.length}자`;
+    // charCount.textContent = `${noteEditor.value.length}자`;
 });
 
 // 지우기 버튼
 clearBtn.addEventListener("click", () => {
     noteEditor.value = "";
-    charCount.textContent = "0자";
+    // charCount.textContent = "0자";
 });
+
+// 해당 영역은 textarea 영역에 존재하는 내용을 가져오는 기능을 위해 임시 도입
+saveBtn.addEventListener("click", () => {
+    console.log(`${noteEditor.value}`)
+});
+
 
 // 사이드바 토글
 const toggleSidebar = () => {
