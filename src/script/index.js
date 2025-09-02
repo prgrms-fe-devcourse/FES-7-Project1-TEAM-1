@@ -1,3 +1,6 @@
+import APIS from "../modules/api.js"; // 경로는 실제 파일 위치에 맞게 수정
+
+
 const noteEditor = document.getElementById("noteEditor");
 const charCount = document.querySelector(".char-count");
 const clearBtn = document.getElementById("clearBtn");
@@ -23,8 +26,19 @@ clearBtn.addEventListener("click", () => {
 });
 
 // 해당 영역은 textarea 영역에 존재하는 내용을 가져오는 기능을 위해 임시 도입
-saveBtn.addEventListener("click", () => {
+saveBtn.addEventListener("click", async () => {
     console.log(`${noteEditor.value}`)
+
+    try {
+        const result = await APIS.updateDocument(155598,
+            {
+                "title": "제목 수정 123",
+                "content": `${noteEditor.value.trim()}`
+            }
+        )
+    } catch (err) {
+        console.error(err)
+    }
 });
 
 
@@ -46,3 +60,10 @@ const toggleSidebar = () => {
 
 // 메뉴 버튼 클릭 시 실행
 menuButton.addEventListener("click", toggleSidebar);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    APIS.getDocument();
+    APIS.getSpecificDocument(155598)
+    // console.log(APIS.getSpecificDocument(155598))
+});
