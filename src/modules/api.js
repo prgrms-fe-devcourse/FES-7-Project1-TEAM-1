@@ -6,6 +6,9 @@ const DEFAULT_HEADER = {
 };
 
 const APIS = {
+    getTeamName() {
+        return DEFAULT_HEADER["x-username"];
+    },
   // 전체 문서 조회
   async getDocument() {
     return fetch(BASE_URL, { headers: DEFAULT_HEADER })

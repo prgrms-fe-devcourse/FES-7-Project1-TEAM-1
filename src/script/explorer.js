@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // 새 Document 생성
 const addButton = document.querySelector("#addNode");
-addButton.addEventListener("click", async() => {
+addButton.addEventListener("click", async () => {
     try {
         let personal_page = document.querySelector("#personal-page");
         const doc = await dataModel.createDocument();

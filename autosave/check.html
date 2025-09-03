@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자동저장 기능 확인용</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>자동저장 테스트</h1>
+
+      <!-- (선택) 제목 입력: 있으면 자동저장에 같이 전송됨 -->
+      <div class="row">
+        <label for="titleInput">제목 (optional)</label>
+        <input id="titleInput" type="text" placeholder="제목을 입력하세요" />
+      </div>
+
+      <!-- 본문 편집기 -->
+      <div class="row">
+        <label for="noteEditor">본문</label>
+        <textarea id="noteEditor" placeholder="내용을 입력하세요..."></textarea>
+        <div class="status">상태: <span id="saveStatus">대기 중</span></div>
+        <div class="tip">
+          • 입력을 멈춘 뒤 <strong>700ms</strong> 후 자동저장됩니다.<br />
+          • <span class="kbd">Ctrl</span>/<span class="kbd">⌘</span> +
+          <span class="kbd">S</span> 로 즉시 저장.<br />
+          • 탭 전환/닫기 시 마지막 내용이 전송됩니다.
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./autosave.js"></script>
+  </body>
+</html>
