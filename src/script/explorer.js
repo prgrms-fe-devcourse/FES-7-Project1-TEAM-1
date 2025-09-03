@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // 새 Document 생성
 const addButton = document.querySelector("#addNode");
-addButton.addEventListener("click", async() => {
+addButton.addEventListener("click", async () => {
     try {
         console.log("addButton");
         let sidebar = document.querySelector(".sidebar-nav");
@@ -32,11 +32,11 @@ addButton.addEventListener("click", async() => {
             "title": "문서3",
             "content": "문서3의 내용입니당",
             "parent": null
-          })
+        })
         const docNode = document.createElement("a");
         docNode.textContent = data.title;
         docNode.classList.add("nav-link");
-        
+
         sidebar.appendChild(docNode);
     } catch (err) {
         console.error(err)

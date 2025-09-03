@@ -41,14 +41,11 @@ const APIS = {
             });
     },
     // 문서 추가
-    async addDocument(documentTitle, parent) {
+    async addDocument(body) {
         return fetch(BASE_URL, {
             headers: DEFAULT_HEADER,
             method: "POST",
-            body: {
-                'title': documentTitle,
-                "parent": parent,
-            }
+            body: JSON.stringify(body)
         })
             .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
