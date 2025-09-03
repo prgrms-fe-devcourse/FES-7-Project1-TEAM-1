@@ -1,5 +1,7 @@
 const BASE_URL = `https://kdt-api.fe.dev-cos.com/documents`;
 
+const editorTitle = document.getElementById("editor-title");
+
 const DEFAULT_HEADER = {
     "x-username": "strangers", // 팀 고유 헤더
     "Content-Type": "application/json",
@@ -94,6 +96,7 @@ const APIS = {
                 console.error(err);
             });
     },
+    // 해당 Document 접근 시 제목,내용 표시 부분
     open(doc) {
         const title = document.getElementById("editor-title");
         title.value = doc.title ?? "";
@@ -101,6 +104,11 @@ const APIS = {
 
         const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
         noteEditor.value = doc.content ?? "";
+
+        // 생성된 Document 제목 부분에 Focus 추가
+        editorTitle.focus();
+        // Focus 영역을 제일 앞 글자앞에 배치하도록 추가
+        // editorTitle.setSelectionRange(0, 0);
     },
 
     // (구현 예정 | API 재호출 목적)

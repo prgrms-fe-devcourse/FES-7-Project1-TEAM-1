@@ -319,6 +319,7 @@ body {
 
 .card-header {
   padding: 24px 24px 0 24px;
+  user-select: none;
 }
 
 .card-title {

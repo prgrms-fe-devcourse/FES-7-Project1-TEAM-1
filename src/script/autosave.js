@@ -1,14 +1,13 @@
 import APIS from "../modules/api.js";
 import { state } from './explorer.js'
 
-
 const editorTitle = document.getElementById("editor-title");
 const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
 
 // let saveStatus = document.getElementById("saveStatus");
 
 // 임시 기능 (전체 지우기는 유지, 저장 기능은 임시)
-const saveBtn = document.getElementById("saveBtn");
+// const saveBtn = document.getElementById("saveBtn");
 const clearBtn = document.getElementById("clearBtn"); // TextArea 영역의 쓰레기통 Icon ( 기능적으로는 텍스트 초기화 )
 
 let DEBOUNCE_MS = 300;
@@ -103,17 +102,3 @@ clearBtn.addEventListener("click", async () => {
         content: noteEditor.value,
     });
 });
-
-// // (임시) 해당 영역은 textarea 영역에 존재하는 내용을 가져오는 기능을 위해 도입
-// saveBtn.addEventListener("click", async () => {
-//     const DOC_ID = state.currentDocumentId;
-//     console.log(`${noteEditor.value}`)
-
-//     try {
-//         await APIS.updateDocument(DOC_ID, {
-//             "content": `${noteEditor.value.trim()}`
-//         })
-//     } catch (err) {
-//         console.error(err)
-//     }
-// });
