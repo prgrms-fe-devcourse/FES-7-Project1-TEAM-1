@@ -1,6 +1,11 @@
 import APIS from "../modules/api.js";
 
-// 
+
+// 현재 접근중인 DocumentId 값을 관리하기 위한 변수
+export const state = {
+    currentDocumentId: null,
+};
+
 
 class DataModel {
     #docList;
@@ -91,14 +96,16 @@ personal_page.addEventListener("click", async (ev) => {
     try {
         // console.log(ev.target.parentElement.innerText);
         // console.log(ev.target.parentElement.id);
-        // console.log("아이디", ev.target.id);
+        console.log("아이디", ev.target.id);
         if (ev.target.id === "addDocButton") {
         } else if (ev.target.id === "deleteDocButton") {
-            let docId = ev.target.parentElement.id;
+            state.currentDocumentId = ev.target.parentElement.id;
+            let docId = state.currentDocumentId;
             await dataModel.deleteDocument(docId);
             render();
         } else {
-            let docId = ev.target.id;
+            state.currentDocumentId = ev.target.id;
+            let docId = state.currentDocumentId;
             let doc = await dataModel.getDocument(docId);
             await APIS.open(doc);
         }
