@@ -1,6 +1,5 @@
 import APIS from "../modules/api.js";
 
-
 // 현재 접근중인 DocumentId 값을 관리하기 위한 변수
 export const state = {
     currentDocumentId: null,
@@ -82,8 +81,15 @@ addButton.addEventListener("click", async () => {
     try {
         let personal_page = document.querySelector("#personal-page");
         const doc = await dataModel.createDocument();
-        personal_page.appendChild(createNode(doc));
-        APIS.open(doc);
+        const newNode = createNode(doc);
+        personal_page.appendChild(newNode);
+        // 기존 Active 영역 제거 후 새로 추가된 노드에 Active 효과 부여
+        document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+        newNode.classList.add("active");
+        // 새로 추가된 부분을 바로 편질 할 수 있도록 ID 재할당
+        state.currentDocumentId = doc.id
+        console.log(state.currentDocumentId)
+        await APIS.open(doc);
     } catch (err) {
         console.error(err)
     }
