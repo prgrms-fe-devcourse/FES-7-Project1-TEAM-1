@@ -1,12 +1,20 @@
 import APIS from "../modules/api.js"; // 경로는 실제 파일 위치에 맞게 수정
 
+// 팀 이름 관리
+const teamName = document.getElementById("teamName") // 팀 이름
 
-const noteEditor = document.getElementById("noteEditor");
-const charCount = document.querySelector(".char-count");
-const clearBtn = document.getElementById("clearBtn");
-const menuButton = document.getElementById("menuButton");
-const sidebar = document.getElementById("sidebar");
-const mainContent = document.getElementById("mainContent");
+// 사이드바 영역 변수
+const sidebar = document.getElementById("sidebar"); // Side-Bar 영역
+const sidebarNav = document.getElementById("sidebar-nav"); // Side-Bar 영역
+const menuButton = document.getElementById("menuButton"); // Side-Bar 영역의 메뉴 버튼 ( Toggle )
+
+// Textarea 영역 변수
+const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
+const charCount = document.querySelector(".char-count"); // TextArea 영역의 글자 수 Count 변수
+const clearBtn = document.getElementById("clearBtn"); // TextArea 영역의 쓰레기통 Icon ( 기능적으로는 텍스트 초기화 )
+
+// 메인 컨텐츠 영역 변수
+const mainContent = document.getElementById("mainContent"); // 메인 컨텐츠 영역
 
 // 임시 기능
 const saveBtn = document.getElementById("saveBtn");
@@ -19,7 +27,7 @@ noteEditor.addEventListener("input", () => {
     // charCount.textContent = `${noteEditor.value.length}자`;
 });
 
-// 지우기 버튼
+// 지우기 버튼 (TextArea 영역 초기화)
 clearBtn.addEventListener("click", () => {
     noteEditor.value = "";
     // charCount.textContent = "0자";
@@ -30,9 +38,8 @@ saveBtn.addEventListener("click", async () => {
     console.log(`${noteEditor.value}`)
 
     try {
-        const result = await APIS.updateDocument(155598,
+        const result = await APIS.updateDocument(testDocumentId,
             {
-                "title": "제목 수정 123",
                 "content": `${noteEditor.value.trim()}`
             }
         )

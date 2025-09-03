@@ -7,6 +7,9 @@ const DEFAULT_HEADER = {
 }
 
 const APIS = {
+    getTeamName() {
+        return DEFAULT_HEADER["x-username"];
+    },
     // 전체 문서 조회
     async getDocument() {
         return fetch(BASE_URL, { headers: DEFAULT_HEADER })
@@ -38,8 +41,12 @@ const APIS = {
             });
     },
     // 문서 추가
-    async addDocument() {
-        return fetch(BASE_URL, { headers: DEFAULT_HEADER })
+    async addDocument(body) {
+        return fetch(BASE_URL, {
+            headers: DEFAULT_HEADER,
+            method: "POST",
+            body: JSON.stringify(body)
+        })
             .then(async (res) => {
                 if (!res.ok) throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
                 const data = await res.json();
