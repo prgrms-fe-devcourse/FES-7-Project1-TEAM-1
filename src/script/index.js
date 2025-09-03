@@ -22,8 +22,8 @@ const saveBtn = document.getElementById("saveBtn");
 // 사이드바 상태 관리 (false = 접힘, true = 펼침)
 let sidebarOpen = true;
 
-// 저장 기능을 위한 임시 ID
-let DOC_ID = 156086;
+// // 저장 기능을 위한 임시 ID
+// let DOC_ID = 156086;
 
 // 노트 입력 이벤트
 // noteEditor.addEventListener("input", () => {
@@ -98,3 +98,13 @@ const toggleSidebar = () => {
     // 접근성 속성 업데이트
     menuButton.setAttribute("aria-expanded", sidebarOpen.toString());
 };
+
+sidebarNav.addEventListener("click", (e) => {
+    const link = e.target.closest(".nav-link");
+    if (!link) return; // nav-link가 아닌 곳 클릭 시 무시
+    e.preventDefault();
+
+    // 모든 active 제거 후 현재 클릭한 것에 active 추가
+    document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+    link.classList.add("active");
+})

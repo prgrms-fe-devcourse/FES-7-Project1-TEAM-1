@@ -72,6 +72,7 @@ body {
 .sidebar-nav {
   margin-top: 32px;
   padding: 0 16px;
+  user-select: none;
 }
 
 .sidebar.collapsed .sidebar-nav {
@@ -104,8 +105,9 @@ body {
 }
 
 .sidebar-nav a.active {
-  background-color: #656a74;
-  color: white;
+  background-color: #3d4d6d;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .sidebar-nav a.active:hover {
