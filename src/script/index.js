@@ -22,32 +22,66 @@ const saveBtn = document.getElementById("saveBtn");
 // 사이드바 상태 관리 (false = 접힘, true = 펼침)
 let sidebarOpen = true;
 
+// 저장 기능을 위한 임시 ID
+let DOC_ID = 156086;
+
 // 노트 입력 이벤트
-noteEditor.addEventListener("input", () => {
-    // charCount.textContent = `${noteEditor.value.length}자`;
-});
+// noteEditor.addEventListener("input", () => {
+//     // charCount.textContent = `${noteEditor.value.length}자`;
+// });
 
-// 지우기 버튼 (TextArea 영역 초기화)
-clearBtn.addEventListener("click", () => {
-    noteEditor.value = "";
-    // charCount.textContent = "0자";
-});
+// // 지우기 버튼 (TextArea 영역 초기화)
+// clearBtn.addEventListener("click", async () => {
+//     noteEditor.value = "";
 
-// 해당 영역은 textarea 영역에 존재하는 내용을 가져오는 기능을 위해 임시 도입
-saveBtn.addEventListener("click", async () => {
-    console.log(`${noteEditor.value}`)
+//     await APIS.updateDocument(DOC_ID, {
+//         title: "제목",
+//         content: noteEditor.value,
+//     });
+// }); 
 
+// // 해당 영역은 textarea 영역에 존재하는 내용을 가져오는 기능을 위해 임시 도입
+// saveBtn.addEventListener("click", async () => {
+//     console.log(`${noteEditor.value}`)
+
+//     try {
+//         const result = await APIS.updateDocument(DOC_ID,
+//             {
+//                 "content": `${noteEditor.value.trim()}`
+//             }
+//         )
+//     } catch (err) {
+//         console.error(err)
+//     }
+// });
+
+
+// 해당 페이지 접근 시 실행
+document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const result = await APIS.updateDocument(testDocumentId,
-            {
-                "content": `${noteEditor.value.trim()}`
-            }
-        )
+
+        // 팀 이름 부여 (사이드바 영역)
+        teamName.innerText = `${APIS.getTeamName()} Notion`
+
+        // // 현재 팀 Document 데이터 안에 존재하는 모든 항목 출력
+        // const documentTitle = await APIS.getDocument();
+        // console.log(documentTitle)
+
+        // // 현재 팀 Document 항목들의 title 출력
+        // documentTitle.forEach(element => {
+        //     console.log(element.title)
+        // });
+
+        // 메뉴 버튼 Toggle 이벤트 리스너 추가
+        menuButton.addEventListener("click", toggleSidebar);
+
     } catch (err) {
         console.error(err)
     }
-});
 
+    // APIS.getSpecificDocument(155598)
+    // console.log(APIS.getSpecificDocument(155598))
+});
 
 // 사이드바 토글
 const toggleSidebar = () => {
@@ -64,25 +98,3 @@ const toggleSidebar = () => {
     // 접근성 속성 업데이트
     menuButton.setAttribute("aria-expanded", sidebarOpen.toString());
 };
-
-// 메뉴 버튼 클릭 시 실행
-menuButton.addEventListener("click", toggleSidebar);
-
-
-document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        // 현재 팀 Document 데이터 안에 존재하는 모든 항목 출력
-        const documentTitle = await APIS.getDocument();
-        console.log(documentTitle)
-
-        // 현재 팀 Document 항목들의 title 출력
-        documentTitle.forEach(element => {
-            console.log(element.title)
-        });
-    } catch (err) {
-        console.error(err)
-    }
-
-    // APIS.getSpecificDocument(155598)
-    // console.log(APIS.getSpecificDocument(155598))
-});

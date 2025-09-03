@@ -4,7 +4,7 @@ import APIS from "../modules/api.js";
 
 class DataModel {
     #docList;
-    
+
     async listRoots() {
         this.#docList = await APIS.getDocument();
         console.log("독리스트", this.#docList);
@@ -23,8 +23,8 @@ class DataModel {
             "title": "새 페이지",
             "content": "",
             "parent": null
-          })
-          this.#docList.push(doc);
+        })
+        this.#docList.push(doc);
         return doc;
     }
 
@@ -93,7 +93,6 @@ personal_page.addEventListener("click", async (ev) => {
         // console.log(ev.target.parentElement.id);
         // console.log("아이디", ev.target.id);
         if (ev.target.id === "addDocButton") {
-
         } else if (ev.target.id === "deleteDocButton") {
             let docId = ev.target.parentElement.id;
             await dataModel.deleteDocument(docId);
@@ -101,7 +100,7 @@ personal_page.addEventListener("click", async (ev) => {
         } else {
             let docId = ev.target.id;
             let doc = await dataModel.getDocument(docId);
-            APIS.open(doc);
+            await APIS.open(doc);
         }
     } catch (err) {
         console.error(err)
@@ -118,6 +117,7 @@ APIS.registerUpdate(updateList);
 function createNode(doc) {
     const docNode = document.createElement("a");
     docNode.classList.add("nav-link");
+    docNode.setAttribute("id", doc.id);
     const div = document.createElement("div");
     div.textContent = doc.title;
     div.setAttribute("id", doc.id);
