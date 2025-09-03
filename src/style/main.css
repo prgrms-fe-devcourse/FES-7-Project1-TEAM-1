@@ -46,7 +46,8 @@ body {
 .sidebar-logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
   gap: 8px;
   width: 100%;
 }
@@ -82,7 +83,7 @@ body {
 .sidebar-nav a {
   display: flex;
   align-items: center;
-  padding: 12px 16px;
+  padding: 8px;
   color: #cbd5e1;
   text-decoration: none;
   border-radius: 8px;
@@ -93,10 +94,14 @@ body {
 }
 
 .sidebar-nav > div > div > div {
-  padding-left: 24px;
+  padding-left: 12px;
 }
 
 .sidebar-nav > div > div > div > div {
+  padding-left: 24px;
+}
+
+.sidebar-nav > div > div > div > div > div {
   padding-left: 36px;
 }
 
@@ -130,6 +135,38 @@ body {
   width: 100%;
 }
 
+/* // 추가 아이콘 관련 */
+.icon-btn {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.nav-link > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-link > div button:first-of-type {
+  margin-left: auto;
+}
+
+.nav-link > div button {
+  margin-left: 4px;
+}
 /* 메인 컨테이너 영역 */
 .main-content {
   margin-left: 256px;
@@ -140,8 +177,26 @@ body {
   margin-left: 56px;
 }
 
+/* personal-page 영역 스크롤 CSS */
+#personal-page {
+  max-height: calc(100vh - 200px); /* 상단 header/nav 영역 제외한 높이 */
+  overflow-y: auto;
+  padding-right: 4px; /* 스크롤바와 내용 간격 */
+}
+
+#personal-page::-webkit-scrollbar {
+  width: 6px;
+}
+
+#personal-page::-webkit-scrollbar-thumb {
+  background-color: #2f3846;
+  border-radius: 2px;
+  margin-left: 10px;
+}
+
 /* 메인 페이지 헤더 영역 */
 .page-header {
+  min-height: 48px;
   background-color: white;
   border-bottom: 1px solid #e2e8f0;
   padding: 12px 24px;
@@ -285,10 +340,10 @@ body {
 }
 
 .note-editor::placeholder {
-  font-style: normal; /* 기울임 제거 */
-  color: #94a3b8; /* 회색 톤 유지 or 원하는 색상 */
-  font-family: Arial, sans-serif; /* 원하는 폰트 지정 */
-  font-size: 14px; /* 크기 조정 가능 */
+  font-style: normal;
+  color: #94a3b8;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
 .editor-status {

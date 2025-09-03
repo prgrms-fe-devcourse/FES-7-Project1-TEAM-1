@@ -1,6 +1,7 @@
 import APIS from "../modules/api.js";
 import { state } from './explorer.js'
 
+const headerTitle = document.getElementById("header-title");
 const editorTitle = document.getElementById("editor-title");
 const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
 
@@ -18,18 +19,27 @@ function setStatus(text) {
     console.log("[status]", text);
 }
 
-// 실제 저장 기능 담당 (자동 저장)
+// 내용 저장 기능 담당 (자동 저장)
 async function saveNowContent(content) {
     const DOC_ID = state.currentDocumentId;
-
     setStatus("내용 저장 중…");
 
-    try {
-        await APIS.updateDocument(DOC_ID, {
-            content: content,
-        });
-    } catch (err) {
-        console.error(err)
+    if (content.length >= 1) {
+        try {
+            await APIS.updateDocument(DOC_ID, {
+                content: content,
+            });
+        } catch (err) {
+            console.error(err)
+        }
+    } else {
+        try {
+            await APIS.updateDocument(DOC_ID, {
+                content: null,
+            });
+        } catch (err) {
+            console.error(err)
+        }
     }
 
 
@@ -38,19 +48,30 @@ async function saveNowContent(content) {
     }, DEBOUNCE_MS);
 }
 
+// 제목 저장 기능 담당 (자동 저장)
 async function saveNowTitle(content) {
     const DOC_ID = state.currentDocumentId;
-
     setStatus("제목 저장 중…");
 
-    try {
-        await APIS.updateDocument(DOC_ID, {
-            title: content,
-        });
-    } catch (err) {
-        console.error(err)
-    }
+    if (content.length >= 1) {
+        try {
+            await APIS.updateDocument(DOC_ID, {
+                title: content,
+            });
+        } catch (err) {
+            console.error(err)
+        }
 
+    } else {
+        try {
+            await APIS.updateDocument(DOC_ID, {
+                title: null,
+            });
+        } catch (err) {
+            console.error(err)
+        }
+
+    }
 
     setTimeout(function () {
         setStatus("저장됨");
