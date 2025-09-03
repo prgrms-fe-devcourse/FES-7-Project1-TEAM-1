@@ -87,7 +87,7 @@ const APIS = {
                 if (!res.ok)
                     throw new Error(`HTTP ERROR ${res.status} - ${res.statusText}`);
                 const data = await res.json();
-                // console.log(data);
+                console.log("delete", data);
                 return data;
             })
             .catch((err) => {
@@ -97,6 +97,7 @@ const APIS = {
     open(doc) {
         const title = document.getElementById("editor-title");
         title.value = doc.title ?? "";
+        console.log("open", title.value);
 
         const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
         noteEditor.value = doc.content ?? "";

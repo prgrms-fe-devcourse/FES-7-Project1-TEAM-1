@@ -92,6 +92,14 @@ body {
   overflow: hidden;
 }
 
+.sidebar-nav > div > div > div {
+  padding-left: 24px;
+}
+
+.sidebar-nav > div > div > div > div {
+  padding-left: 36px;
+}
+
 .sidebar.collapsed .sidebar-nav a {
   padding: 12px 8px;
   justify-content: center;
