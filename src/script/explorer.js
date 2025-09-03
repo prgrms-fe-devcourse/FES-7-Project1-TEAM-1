@@ -28,7 +28,8 @@ class DataModel {
         for (const child of doc.documents) {
             this.deleteDocument_(child);
         }
-    }    
+    }
+    await APIS.deleteDocument(doc.id);
   }
 
   async createDocument(docId) {

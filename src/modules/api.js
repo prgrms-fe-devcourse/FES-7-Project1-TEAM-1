@@ -81,6 +81,7 @@ const APIS = {
     },
     // 문서 삭제
     async deleteDocument(documentId) {
+        console.log("apis.deleteDoc()")
         return fetch(`${BASE_URL}/${documentId}`, {
             headers: DEFAULT_HEADER,
             method: "DELETE",
