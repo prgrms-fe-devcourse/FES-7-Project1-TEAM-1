@@ -2,6 +2,7 @@ import APIS from "../modules/api.js";
 import { state } from './explorer.js'
 
 const headerTitle = document.getElementById("header-title");
+
 const editorTitle = document.getElementById("editor-title");
 const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
 
@@ -27,6 +28,7 @@ async function saveNowContent(content) {
     if (content.length >= 1) {
         try {
             await APIS.updateDocument(DOC_ID, {
+                title: editorTitle.value,
                 content: content,
             });
         } catch (err) {
@@ -57,6 +59,7 @@ async function saveNowTitle(content) {
         try {
             await APIS.updateDocument(DOC_ID, {
                 title: content,
+                content: noteEditor.value,
             });
         } catch (err) {
             console.error(err)
