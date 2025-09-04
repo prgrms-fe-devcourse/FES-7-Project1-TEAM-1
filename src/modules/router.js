@@ -111,6 +111,12 @@ window.addEventListener("hashchange", async () => {
                 editorTitle.value = "";
                 noteEditor.value = "";
 
+                editorCard.classList.add("disabled");
+                clearBtn.classList.add("disabled");
+                editorTitle.disabled = true;
+                noteEditor.disabled = true;
+                clearBtn.disabled = true;
+
                 navigateTo("", {});
             }
         } catch (err) {
@@ -121,6 +127,16 @@ window.addEventListener("hashchange", async () => {
             headerTitle.textContent = "";
             editorTitle.value = "";
             noteEditor.value = "";
+
+            editorCard.classList.add("disabled");
+            clearBtn.classList.add("disabled");
+            editorTitle.disabled = true;
+            noteEditor.disabled = true;
+            clearBtn.disabled = true;
+
+            editorTitle.value = "";
+            noteEditor.value = "";
+            headerTitle.innerText = "";
 
             navigateTo("", {});
 
