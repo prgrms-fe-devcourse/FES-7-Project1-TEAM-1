@@ -9,14 +9,11 @@ const noteEditor = document.getElementById("noteEditor");
 // 입력 대시보드 영역 항목들
 const clearBtn = document.getElementById("clearBtn");
 
-// 페이지 생성 버튼
-const addButton = document.querySelector("#addNode");
-
-// 사이드바 헤더 부분
-const personal_page = document.querySelector("#personal-page");
-
 // 입력 대시보드 영역 항목들
 const editorCard = document.querySelector(".editor-card");
+
+// 편집기 부분 글자수 Counting
+const charCount = document.getElementById("char-count");
 
 // 최근 방문 문서 관리용 변수
 const visitedDocArr = [];
@@ -119,6 +116,8 @@ window.addEventListener("hashchange", async () => {
 
                 navigateTo("", {});
             }
+
+            charCount.textContent = `${noteEditor.value.length}자`
         } catch (err) {
             console.error("문서 로드 실패:", err);
 

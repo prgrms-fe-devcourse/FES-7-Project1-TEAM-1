@@ -94,15 +94,23 @@ body {
 }
 
 .sidebar-nav > div > div > div {
-  padding-left: 12px;
+  padding-left: 6px;
 }
 
 .sidebar-nav > div > div > div > div {
-  padding-left: 24px;
+  padding-left: 12px;
 }
 
 .sidebar-nav > div > div > div > div > div {
-  padding-left: 36px;
+  padding-left: 18px;
+}
+
+.sidebar-nav > div > div > div > div > div > div {
+  padding-left: 24px;
+}
+
+.sidebar-nav > div > div > div > div > div > div > div {
+  padding-left: 30px;
 }
 
 .sidebar.collapsed .sidebar-nav a {
@@ -308,7 +316,7 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 #f1f5f9;
   user-select: none;
-  caret-color: transparent;
+  /* caret-color: transparent; */
 }
 
 .note-editor:focus {
@@ -361,6 +369,7 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
   font-weight: 500;
+  user-select: none;
 }
 
 /* 메인 컨텐츠 안 영역 */

@@ -12,22 +12,6 @@ const sidebar = document.getElementById("sidebar"); // Side-Bar 영역
 const sidebarNav = document.getElementById("sidebar-nav"); // Side-Bar 영역
 const menuButton = document.getElementById("menuButton"); // Side-Bar 영역의 메뉴 버튼 ( Toggle )
 
-// 입력 대시보드 영역 항목들
-const clearBtn = document.getElementById("clearBtn");
-
-const headerTitle = document.getElementById("header-title");
-const editorTitle = document.querySelector("#editor-title");
-
-// 페이지 생성 버튼
-const addButton = document.querySelector("#addNode");
-
-// 사이드바 헤더 부분
-const personal_page = document.querySelector("#personal-page");
-
-// 입력 대시보드 영역 항목들
-const editorCard = document.querySelector(".editor-card");
-const noteEditor = document.getElementById("noteEditor");
-
 // 메인 컨텐츠 영역 변수
 const mainContent = document.getElementById("mainContent"); // 메인 컨텐츠 영역
 
@@ -70,19 +54,6 @@ sidebarNav.addEventListener("click", async (e) => {
     // console.log("index.js", state.currentDocumentId)
     if (state.currentDocumentId) {
         navigateTo(`/doc/${state.currentDocumentId}`, { docId: state.currentDocumentId });
-
-        // const doc = await APIS.getSpecificDocument(state.currentDocumentId);
-        // console.log("index, 여기 먼데?", doc)
-        // if (doc) {
-        //     headerTitle.textContent = `${doc.title}`;
-        //     editorTitle.value = doc.title ?? "";
-        //     noteEditor.value = doc.content ?? "";
-
-        //     editorCard.classList.remove("disabled");
-        //     editorTitle.disabled = false;
-        //     noteEditor.disabled = false;
-        //     clearBtn.disabled = false;
-        // }
     }
 })
 
@@ -96,11 +67,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 메뉴 버튼 Toggle 이벤트 리스너 추가
         // menuButton.addEventListener("click", toggleSidebar);
 
-
         const path = location.hash.slice(1) || ""; // #/doc/state.currentDocumentId 부분에서 # 제거
         renderPage(path, history.state || {});
-
-
 
     } catch (err) {
         console.error(err)

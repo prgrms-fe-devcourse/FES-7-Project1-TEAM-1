@@ -5,11 +5,11 @@ const headerTitle = document.getElementById("header-title");
 const editorTitle = document.getElementById("editor-title");
 const noteEditor = document.getElementById("noteEditor"); // TextArea 영역
 
-// let saveStatus = document.getElementById("saveStatus");
-
-// 임시 기능 (전체 지우기는 유지, 저장 기능은 임시)
-// const saveBtn = document.getElementById("saveBtn");
+// 내용 지우기 버튼
 const clearBtn = document.getElementById("clearBtn"); // TextArea 영역의 쓰레기통 Icon ( 기능적으로는 텍스트 초기화 )
+
+// 편집기 부분 글자수 Counting
+const charCount = document.getElementById("char-count");
 
 let DEBOUNCE_MS = 300;
 let saveTimer = null; //
@@ -106,20 +106,29 @@ function onInputTitle(event) {
     }, DEBOUNCE_MS);
 }
 
-if (noteEditor) {
-    noteEditor.addEventListener("input", onInputEditor);
-}
-if (editorTitle) {
-    editorTitle.addEventListener("input", onInputTitle);
-}
 
 // 지우기 버튼 (TextArea 영역 초기화)
 clearBtn.addEventListener("click", async () => {
     const DOC_ID = state.currentDocumentId;
     noteEditor.value = "";
+    charCount.textContent = `${noteEditor.value.length}자`
 
     await APIS.updateDocument(DOC_ID, {
-        title: "제목",
         content: noteEditor.value,
     });
 });
+
+
+// 편집기 부분 이벤트 추가 (자동 저장)
+if (noteEditor) {
+    noteEditor.addEventListener("keyup", onInputEditor);
+}
+
+// 편집기 부분 이벤트 추가 (텍스트 )
+noteEditor.addEventListener("keyup", (ev) => {
+    charCount.textContent = `${noteEditor.value.length}자`
+})
+
+if (editorTitle) {
+    editorTitle.addEventListener("keyup", onInputTitle);
+}
