@@ -86,15 +86,14 @@ window.addEventListener("hashchange", async () => {
     const path = location.hash.slice(1) || "";
     renderPage(path, history.state || {});
 
-    // 디버깅용 출력
-    console.log("뒤로가기/앞으로가기 발생:", appState.currentDocumentId);
+    console.log("참조 DOC 확인용:", appState.currentDocumentId);
 
     if (appState.currentDocumentId) {
         try {
             navigateTo(`/doc/${appState.currentDocumentId}`, { docId: appState.currentDocumentId });
 
             const doc = await APIS.getSpecificDocument(appState.currentDocumentId);
-            console.log("index, 여기 먼데?", doc);
+            console.log("haschange, 확인", doc);
 
             if (doc) {
                 headerTitle.textContent = `${doc.title}`;
