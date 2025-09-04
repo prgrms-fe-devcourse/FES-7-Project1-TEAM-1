@@ -15,7 +15,6 @@ const menuButton = document.getElementById("menuButton"); // Side-Bar 영역의 
 // 입력 대시보드 영역 항목들
 const clearBtn = document.getElementById("clearBtn");
 
-
 const headerTitle = document.getElementById("header-title");
 const editorTitle = document.querySelector("#editor-title");
 
@@ -72,18 +71,18 @@ sidebarNav.addEventListener("click", async (e) => {
     if (state.currentDocumentId) {
         navigateTo(`/doc/${state.currentDocumentId}`, { docId: state.currentDocumentId });
 
-        const doc = await APIS.getSpecificDocument(state.currentDocumentId);
-        console.log("index, 여기 먼데?", doc)
-        if (doc) {
-            headerTitle.textContent = `${doc.title}`;
-            editorTitle.value = doc.title ?? "";
-            noteEditor.value = doc.content ?? "";
+        // const doc = await APIS.getSpecificDocument(state.currentDocumentId);
+        // console.log("index, 여기 먼데?", doc)
+        // if (doc) {
+        //     headerTitle.textContent = `${doc.title}`;
+        //     editorTitle.value = doc.title ?? "";
+        //     noteEditor.value = doc.content ?? "";
 
-            editorCard.classList.remove("disabled");
-            editorTitle.disabled = false;
-            noteEditor.disabled = false;
-            clearBtn.disabled = false;
-        }
+        //     editorCard.classList.remove("disabled");
+        //     editorTitle.disabled = false;
+        //     noteEditor.disabled = false;
+        //     clearBtn.disabled = false;
+        // }
     }
 })
 

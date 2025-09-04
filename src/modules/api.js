@@ -130,20 +130,20 @@ const APIS = {
                     // 라우팅 업데이트
                     navigateTo(`/doc/${doc.id}`, { docId: doc.id });
 
-                    // 문서 로드
-                    try {
-                        const doc = await APIS.getSpecificDocument(appState.currentDocumentId);
-                        console.log("api.open() 여기 먼데?", doc)
-                        if (doc) {
-                            headerTitle.textContent = `${doc.title}`;
-                            editorTitle.value = doc.title ?? "";
-                            noteEditor.value = doc.content ?? "";
-                        }
-                    } catch (err) {
-                        console.error(err);
-                        appState.currentDocumentId = null;
-                        navigateTo("", {});  // 경로 초기화 + UI 초기화
-                    }
+                    // // 문서 로드
+                    // try {
+                    //     const doc = await APIS.getSpecificDocument(appState.currentDocumentId);
+                    //     console.log("api.open() 여기 먼데?", doc)
+                    //     if (doc) {
+                    //         headerTitle.textContent = `${doc.title}`;
+                    //         editorTitle.value = doc.title ?? "";
+                    //         noteEditor.value = doc.content ?? "";
+                    //     }
+                    // } catch (err) {
+                    //     console.error(err);
+                    //     appState.currentDocumentId = null;
+                    //     navigateTo("", {});
+                    // }
 
                 }
             }

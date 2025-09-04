@@ -1,5 +1,5 @@
 import APIS from "../modules/api.js";
-import { renderPage, navigateTo } from "../modules/router.js";
+import { renderPage, navigateTo, moveToLastDoc } from "../modules/router.js";
 
 const headerTitle = document.getElementById("header-title");
 const editorTitle = document.querySelector("#editor-title");
@@ -221,6 +221,8 @@ personal_page.addEventListener("click", async (ev) => {
 
             await dataModel.deleteDocument(docId);
             state.currentDocumentId = null
+            // 라우트 관리 (삭제)
+            moveToLastDoc(docId)
             await render();
         }
 
